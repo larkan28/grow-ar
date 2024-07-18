@@ -1,0 +1,94 @@
+body {
+    background-color: transparent;
+    font-family: sans-serif;
+}
+
+/* This keeps child nodes hidden while the element loads */
+:not(:defined)>* {
+    display: none;
+}
+
+.expcontainer {
+    display: block;
+    position: relative;
+    border-radius: 20px;
+}
+
+model-viewer {
+    background-color: #878787;
+    overflow-x: hidden;
+    --poster-color: #eee;
+    height: 80vh;
+    width: 100%;
+    border-radius: 20px;
+    --progress-bar-color: #77c658;
+    --progress-bar-height: 15px;
+
+}
+
+#ar-button {
+    background-color: #50D363;
+    position: absolute;
+    left: 50%;
+    white-space: nowrap;
+    top: 90%;
+    font-family: Roboto Regular, Helvetica Neue, sans-serif;
+    color: #fff;
+    font-size: .7em;
+    pointer-events: all;
+    width: 160px;
+    border-radius: 3px;
+    border: none;
+    margin-left: -80px;
+    display: block;
+    z-index: 4;
+    padding: 5px;
+}
+
+#ar-button:active {
+    background-color: #E8EAED;
+}
+
+#ar-button:focus {
+    outline: none;
+}
+
+#ar-button:focus-visible {
+    outline: 1px solid #4285f4;
+}
+
+@keyframes circle {
+    from {
+        transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg);
+    }
+
+    to {
+        transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg);
+    }
+}
+
+@keyframes elongate {
+    from {
+        transform: translateX(100px);
+    }
+
+    to {
+        transform: translateX(-100px);
+    }
+}
+
+model-viewer>#ar-prompt {
+    position: absolute;
+    left: 50%;
+    bottom: 175px;
+    animation: elongate 2s infinite ease-in-out alternate;
+    display: none;
+}
+
+model-viewer[ar-status="session-started"]>#ar-prompt {
+    display: block;
+}
+
+model-viewer>#ar-prompt>img {
+    animation: circle 4s linear infinite;
+}
